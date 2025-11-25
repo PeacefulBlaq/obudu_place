@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Obudu Place • Restaurant & Apartments (Demo)</title>
+  <meta name="description" content="Obudu Place • Delicious meals, comfy apartments, 24-hour service in Wuse 2, Abuja. Book a table or apartment online." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple: #6b21a8;
+      --accent: #7c3aed;
+      --muted: #6b7280;
+      --bg: #0f172a;
+      --card: #0b1220;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      color: #0b1220;
+    }
+    body {
+      background: linear-gradient(180deg, #fff, #f8fafc);
+      -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+    }
+    .pitch-btn {
+          display: inline-block;
+          background: #0a7c4a;
+          color: #fff;
+          padding: 10px 20px;
+          border-radius: 6px;
+          text-decoration: none;
+          font-weight: bold;
+          margin-left: 20px;
+          transition: 0.3s;
+      }
+
+      .pitch-btn:hover {
+          background: #065c37;
+      }
+    .brand {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .brand .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--purple), var(--accent));
+    }
+    .brand .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    nav a {
+      margin-left: 18px;
+      text-decoration: none;
+      color: #0b1220;
+      font-weight: 600;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 28px;
+      align-items: center;
+      margin: 20px 0;
+    }
+    .hero-card {
+      background: #fff;
+      padding: 26px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(12, 15, 20, .06);
+    }
+    .hero h1 {
+      font-size: 28px;
+      margin: 0 0 8px;
+    }
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .cta {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .btn {
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 0;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #e6e7ee;
+    }
+    .booking {
+      background: linear-gradient(180deg, #fff, #fbfdff);
+      padding: 18px;
+      border-radius: 12px;
+      border: 1px solid #eef2ff;
+    }
+    .booking label {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+    .booking input, .booking select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: 1px solid #e6e7ee;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+    .card {
+      background: #fff;
+      padding: 14px;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(12, 15, 20, .04);
+      transition: transform .25s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+    }
+    .card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .apartments {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .apt {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .apt .thumb {
+      width: 110px;
+      height: 80px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f3f4f6;
+    }
+    .apt .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    footer {
+      margin-top: 28px;
+      padding: 18px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .wa {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: #25D366;
+      border-radius: 999px;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, .18);
+    }
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-card {
+        order: 2;
+      }
+      .booking {
+        order: 1;
+      }
+      .apartments {
+        grid-template-columns: 1fr;
+      }
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 520px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .brand .logo {
+        width: 46px;
+        height: 46px;
+      }
+    }
+
+    /* Animations & slider */
+    .fade-in { opacity: 0; transform: translateY(8px); transition: all .6s ease-out; }
+    .fade-in.visible { opacity: 1; transform: none; }
+    .hero-slider { position: relative; overflow: hidden; border-radius: 12px; margin-bottom: 12px; }
+    .hero-slide { width: 100%; height: 220px; object-fit: cover; display: none; }
+    .hero-slide.active { display: block; }
+    @media(max-width:520px) { .hero-slide { height: 160px; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">
+          <img src="images/obudu_place_logo.png" alt="Obudu Place Logo">
+        </div>
+        <div>
+          <div style="font-weight:700">Obudu Place</div>
+          <div class="muted" style="font-size:13px">2B, Batna Close, Off Agadez Street Plaza, Wuse 2, Abuja • Open 24 Hours</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#menu">Menu</a>
+        <a href="#apartments">Apartments</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-card">
+        <div class="hero-slider">
+          <img class="hero-slide" src="images/hero1.jpg" alt="Dining Area">
+          <img class="hero-slide" src="images/hero2.jpg" alt="Food">
+          <img class="hero-slide" src="images/hero3.jpg" alt="Apartment Interior">
+        </div>
+        <h1>Delicious meals • Good vibes • Comfortable apartments</h1>
+        <p class="muted">Open 24 hours. Freshly prepared local & continental dishes. Book a table or an apartment • fast, secure and simple.</p>
+        <div class="cta">
+          <button class="btn btn-primary" onclick="scrollToSection('booking')">Book Now</button>
+          <a class="btn btn-outline" href="#menu">See Menu</a>
+          <a href="pitch.html" class="pitch-btn">See Why You Need a Website</a>
+        </div>
+
+        <div class="grid" id="menu" style="margin-top:20px">
+          <div class="card fade-in">
+            <img src="images/rice.jpg" alt="Jollof Rice">
+            <h3 style="margin:10px 0 6px">Special Jollof Rice</h3>
+            <div class="muted">N2,500 • Freshly cooked • Served with chicken</div>
+          </div>
+          <div class="card fade-in">
+            <img src="images/suya_platter.jpeg" alt="Suya Platter">
+            <h3 style="margin:10px 0 6px">Suya Platter</h3>
+            <div class="muted">N2,000 • Grilled to perfection</div>
+          </div>
+          <div class="card fade-in">
+            <img src="images/seafood_pasta.jpeg" alt="Seafood Pasta">
+            <h3 style="margin:10px 0 6px">Seafood Pasta</h3>
+            <div class="muted">N3,500 • Creamy & delicious</div>
+          </div>
+          <div class="card fade-in">
+            <img src="images/garden_salad.jpeg" alt="Garden Salad">
+            <h3 style="margin:10px 0 6px">Garden Salad</h3>
+            <div class="muted">N1,200 • Fresh seasonal vegetables</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="booking hero-card" id="booking">
+        <h3 style="margin:0">Reserve a Table / Book an Apartment</h3>
+        <p class="muted" style="margin:6px 0 12px">Fill this form and we'll confirm via WhatsApp or call.</p>
+        <label for="name">Full name</label>
+        <input id="name" placeholder="Your full name">
+        <label for="phone">Phone (WhatsApp)</label>
+        <input id="phone" placeholder="+234 818 437 2827">
+        <label for="type">Reservation Type</label>
+        <select id="type">
+          <option>Table Reservation</option>
+          <option>Apartment Booking</option>
+        </select>
+        <label for="date">Date & Time</label>
+        <input id="date" type="datetime-local">
+        <label for="note">Notes (guest count, special request)</label>
+        <input id="note" placeholder="2 adults, 1 child; near window">
+
+        <button class="btn btn-primary" style="width:100%; margin-top:14px" onclick="submitReservation()">Send Reservation via WhatsApp</button>
+        <div style="margin-top:12px; font-size:13px" class="muted">Or call: <strong>+234 818 437 2827</strong></div>
+      </aside>
+    </section>
+
+    <section>
+      <h2 style="margin-top:18px">Comfortable Apartments</h2>
+      <div class="apartments">
+        <div class="card apt fade-in">
+          <div class="thumb"><img src="images/studio_suite.jpeg" alt="Studio Suite"></div>
+          <div>
+            <h4 style="margin:0">Studio Suite</h4>
+            <div class="muted">N10,000 / night • Free Wi-Fi • Air conditioning</div>
+          </div>
+        </div>
+        <div class="card apt fade-in">
+          <div class="thumb"><img src="images/two_bedroom_apartment.jpeg" alt="2-Bedroom Apartment"></div>
+          <div>
+            <h4 style="margin:0">2-Bedroom Apartment</h4>
+            <div class="muted">N18,000 / night • Kitchenette • Free parking</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px">
+        <h2 id="gallery">Gallery</h2>
+        <div class="grid">
+          <div class="card fade-in"><img src="images/Dining_Area.jpeg" alt="Dining Area"></div>
+          <div class="card fade-in"><img src="images/Apartment_Interior.jpeg" alt="Apartment Interior"></div>
+          <div class="card fade-in"><img src="images/Food_Shot.jpeg" alt="Food Shot"></div>
+          <div class="card fade-in"><img src="images/Relax_Lounge.jpeg" alt="Relax Lounge"></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:20px" id="contact">
+      <h2>Contact & Location</h2>
+      <p class="muted">2B Batna Close, Off Agadez Street Plaza, Wuse 2, Abuja • Open 24 hours</p>
+      <p class="muted">Follow us on: <a href="#" style="text-decoration:none;color:var(--accent)">Instagram</a> • <a href="#" style="text-decoration:none;color:var(--accent)">Facebook</a></p>
+
+      <div style="margin-top:12px; display:flex; gap:12px; flex-wrap:wrap">
+        <a class="btn btn-outline" href="#" onclick="openMap()">Open on Google Maps</a>
+        <a class="btn btn-primary" href="#" onclick="window.location.href='mailto:info@obuduplace.com.ng'">Email Us</a>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+        <div>© Obudu Place • 2025 • Designed by Abidemi Bakre</div>
+        <div class="muted">Coming soon: obuduplace.com.ng</div>
+      </div>
+    </footer>
+  </div>
+
+  <a class="wa" href="https://wa.me/2348184372827?text=Hello%20Obudu%20Place,%20I%20want%20to%20make%20a%20reservation" target="_blank" aria-label="WhatsApp">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20.52 3.48A11.91 11.91 0 0012 .5 11.98 11.98 0 00.5 12c0 2.1.55 4.12 1.6 5.9L0 24l6.4-2.05A11.92 11.92 0 0012 23.5c6.61 0 12-5.39 12-12 0-3.2-1.25-6.2-3.48-8.02z" fill="#fff" opacity=".06"/>
+      <path d="M20.52 3.48A11.91 11.91 0 0012 .5 11.98 11.98 0 00.5 12c0 2.1.55 4.12 1.6 5.9L0 24l6.4-2.05A11.92 11.92 0 0012 23.5c6.61 0 12-5.39 12-12 0-3.2-1.25-6.2-3.48-8.02z" fill="none" stroke="#fff" stroke-width="0"/>
+      <path d="M16.98 14.65c-.28-.14-1.66-.82-1.92-.91-.26-.1-.45-.14-.64.14-.18.28-.7.91-.86 1.1-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.39-.83-.74-1.39-1.66-1.55-1.94-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.48.14-.16.18-.27.28-.46.09-.18.05-.34-.2-.48-.07-.14-.64-1.55-.88-2.12-.23-.56-.46-.48-.63-.49l-.54-.01c-.18 0-.48.07-.73.34-.26.27-1 1-1 2.44s1.03 2.83 1.17 3.03c.14.18 2.02 3.08 4.9 4.32 2.88 1.24 2.88.83 3.39.78.5-.04 1.66-.67 1.89-1.33.23-.66.23-1.23.16-1.35-.07-.12-.26-.18-.54-.32z" fill="#fff"/>
+    </svg>
+  </a>
+
+  <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+    function openMap() {
+      window.open('https://www.google.com/maps/search/?api=1&query=2b+Batna+close+off+Agadez+street+Plaza+Wuse+2+Abuja', '_blank');
+    }
+    function submitReservation() {
+      var name = document.getElementById('name').value || 'Customer';
+      var phone = document.getElementById('phone').value || '';
+      var type = document.getElementById('type').value;
+      var date = document.getElementById('date').value;
+      var note = document.getElementById('note').value;
+      var text = encodeURIComponent('Hello Obudu Place, I would like to make a ' + type + ' for: ' + name + '\\nPhone: ' + phone + '\\nWhen: ' + date + '\\nNotes: ' + note);
+      var wa = 'https://wa.me/2348184372827?text=' + text;
+      window.open(wa, '_blank');
+    }
+
+    // Hero slider + scroll reveal
+    (function(){
+      const slides = document.querySelectorAll('.hero-slide');
+      let idx = 0;
+      function show(i) {
+        slides.forEach((s, si) => s.classList.toggle('active', si === i));
+      }
+      if (slides.length > 0) {
+        show(0);
+        setInterval(() => { idx = (idx + 1) % slides.length; show(idx); }, 3500);
+      }
+      function reveal() {
+        document.querySelectorAll('.fade-in').forEach(el => {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight - 40) el.classList.add('visible');
+        });
+      }
+      window.addEventListener('scroll', reveal);
+      window.addEventListener('load', reveal);
+    })();
+  </script>
+</body>
+</html>
